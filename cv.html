@@ -148,15 +148,15 @@
     }
     .cv-foot a { color: var(--cmd); }
 
-    /* ── Print: single-page A4, clean white ────────────────── */
-    @page { size: A4; margin: 9mm 11mm; }
+    /* ── Print: single-page A4, clean white, readable sizes ── */
+    @page { size: A4; margin: 11mm 13mm; }
     @media print {
       :root, :root[data-theme="dark"], :root[data-theme="light"] {
         --bg: #ffffff;
         --bg-elev: #ffffff;
         --border: #c8d0d8;
         --fg: #1a1f26;
-        --fg-muted: #5a6573;
+        --fg-muted: #4f5963;
         --fg-strong: #0a0e14;
         --prompt: #0d6e2c;
         --cmd: #0a4fa0;
@@ -168,47 +168,47 @@
         max-width: none; margin: 0; padding: 0;
         background: transparent; border: 0; border-radius: 0;
         box-shadow: none;
-        font-size: 10.5px; line-height: 1.42;
+        font-size: 11.5px; line-height: 1.45;
       }
       .cv-paper, .cv-paper * { color-adjust: exact; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       a { color: inherit; text-decoration: none; }
-      .cv-contact a, .cv-proj-name a, .cv-foot a { color: var(--cmd); }
+      .cv-contact a, .cv-proj-name, .cv-foot a { color: var(--cmd); }
 
-      .cv-header { padding-bottom: 10px; margin-bottom: 12px; border-bottom-width: 1.5px; }
-      .cv-name { font-size: 19px; margin-bottom: 2px; }
-      .cv-role-stack { margin-top: 4px; gap: 1px; }
-      .cv-role-stack p { font-size: 10.5px; line-height: 1.4; }
-      .cv-contact { font-size: 9.5px; line-height: 1.5; }
+      .cv-header { padding-bottom: 12px; margin-bottom: 14px; border-bottom-width: 1.5px; }
+      .cv-name { font-size: 23px; margin-bottom: 4px; }
+      .cv-role-stack { margin-top: 6px; gap: 2px; }
+      .cv-role-stack p { font-size: 12px; line-height: 1.45; }
+      .cv-contact { font-size: 11px; line-height: 1.6; }
 
-      .cv-summary { font-size: 11px; margin-bottom: 12px; }
+      .cv-summary { font-size: 12.5px; margin-bottom: 14px; line-height: 1.5; }
 
-      .cv-section { margin-bottom: 12px; page-break-inside: avoid; }
+      .cv-section { margin-bottom: 10px; page-break-inside: avoid; }
       .cv-h {
-        font-size: 9.5px; margin-bottom: 6px;
+        font-size: 10.5px; margin-bottom: 6px;
         padding-bottom: 3px; letter-spacing: 1.5px;
       }
 
       .cv-job { margin-bottom: 8px; page-break-inside: avoid; }
-      .cv-job-head { margin-bottom: 2px; }
-      .cv-job-title { font-size: 11.5px; }
-      .cv-job-when { font-size: 9.5px; }
-      .cv-job-stack { font-size: 9.5px; margin: 1px 0 3px; }
-      .cv-job ul { margin: 2px 0 0; padding-left: 14px; }
-      .cv-job li { margin-bottom: 1px; font-size: 10.5px; }
+      .cv-job-head { margin-bottom: 3px; }
+      .cv-job-title { font-size: 12.5px; }
+      .cv-job-when { font-size: 10.5px; }
+      .cv-job-stack { font-size: 10.5px; margin: 2px 0 4px; }
+      .cv-job ul { margin: 3px 0 0; padding-left: 16px; }
+      .cv-job li { margin-bottom: 2px; font-size: 11.5px; line-height: 1.45; }
 
-      .cv-projects { gap: 2px; }
-      .cv-proj { font-size: 10.5px; line-height: 1.38; padding-left: 12px; text-indent: -12px; }
-      .cv-proj-name { font-size: 10px; }
-      .cv-proj-meta { font-size: 10px; }
+      .cv-projects { gap: 4px; }
+      .cv-proj { font-size: 11.5px; line-height: 1.45; padding-left: 14px; text-indent: -14px; }
+      .cv-proj-name { font-size: 11.5px; }
+      .cv-proj-meta { font-size: 11px; }
 
-      .cv-skills { gap: 3px 14px; }
-      .cv-skills dt { font-size: 9.5px; }
-      .cv-skills dd { font-size: 10.5px; }
+      .cv-skills { gap: 4px 16px; }
+      .cv-skills dt { font-size: 10.5px; }
+      .cv-skills dd { font-size: 11.5px; }
 
-      .cv-edu-degree, .cv-edu-school { font-size: 11px; }
-      .cv-edu-when { font-size: 9.5px; }
+      .cv-edu-degree, .cv-edu-school { font-size: 12px; }
+      .cv-edu-when { font-size: 10.5px; }
 
-      .cv-foot { margin-top: 10px; padding-top: 6px; font-size: 8.5px; }
+      .cv-foot { margin-top: 12px; padding-top: 8px; font-size: 9.5px; }
     }
 
     @media (max-width: 720px) {
@@ -261,7 +261,7 @@
     </header>
 
     <p class="cv-summary">
-      <strong>Full-stack engineer (PHP / Vue 3 / React)</strong> shipping production WordPress products and small AI dev-tooling. Part of the team behind <strong>Fluent Forms</strong> (700K+ active installs) and <strong>Fluent Player</strong> at WPManageNinja. On the side, I publish open-source agent context, MCP, and CLI tools on npm — most recently <strong>mincut-context</strong>, a graph-based context selector for AI coding agents.
+      <strong>Full-stack engineer (PHP / Vue 3 / React)</strong> shipping production WordPress products at <strong>WPManageNinja</strong> — part of the team behind Fluent Forms (700K+ installs) and Fluent Player. On the side I publish open-source AI dev-tooling on npm: agent context selectors, MCP bridges, CLI helpers.
     </p>
 
     <section class="cv-section">
@@ -274,10 +274,9 @@
         </div>
         <div class="cv-job-stack">PHP · Vue 3 · React · Gutenberg blocks · Element Plus · MySQL · REST · Tailwind · Vite · PHPUnit · Playwright</div>
         <ul>
-          <li>Build and maintain features across <strong>Fluent Forms</strong> free &amp; pro (form builder used by 700K+ active sites) and <strong>Fluent Player</strong> (video player for WordPress) — server-side PHP, admin Vue 3 SPAs, Gutenberg blocks, and REST APIs.</li>
-          <li>Ship vertical slices end-to-end: PHP services and policies, Vue admin UIs, public form runtime, and the conversational/save-and-resume flows; integrations include payments, Mailchimp, FluentCRM, BunnyCDN, Mux.</li>
-          <li>Cover behaviour with PHPUnit + Playwright; use PHPStan and a custom pre-PR review pipeline to keep a long-lived plugin codebase shippable.</li>
-          <li>Contribute add-ons and helpers: WooCommerce bridge, Calculation Captcha, NOC manager, plus internal tooling that speeds team review and release.</li>
+          <li>Build and maintain features across <strong>Fluent Forms</strong> free &amp; pro (700K+ active sites) and <strong>Fluent Player</strong> — PHP services, Vue 3 admin SPAs, Gutenberg blocks, REST APIs, public form runtime, conversational and save-and-resume flows.</li>
+          <li>Ship vertical slices end-to-end with PHPUnit + Playwright coverage and PHPStan gates; integrations across payments, Mailchimp, FluentCRM, BunnyCDN, and Mux.</li>
+          <li>Contribute helpers and internal tooling — WooCommerce bridge, Calculation Captcha, NOC manager, pre-PR review automation that speeds team review and release.</li>
         </ul>
       </div>
 
@@ -328,16 +327,6 @@
           LAN chat with realtime text and WebRTC voice/video; Reverb + Echo transport.
           <span class="cv-proj-meta">Laravel 12 · Vue 3 · WebRTC</span>
         </li>
-        <li class="cv-proj">
-          <a class="cv-proj-name" href="https://github.com/dhrupo/notifix" target="_blank" rel="noopener">notifix</a> —
-          WordPress plugin for realtime social proof via an adapter-based event pipeline (Pusher / Ably).
-          <span class="cv-proj-meta">PHP</span>
-        </li>
-        <li class="cv-proj">
-          <a class="cv-proj-name" href="https://github.com/dhrupo/fluent-noc" target="_blank" rel="noopener">fluent-noc</a> —
-          WordPress NOC manager with Gutenberg-block PDF templates, QR-verified certificates, and email pipeline.
-          <span class="cv-proj-meta">PHP</span>
-        </li>
       </ul>
     </section>
 
@@ -361,11 +350,6 @@
         </div>
         <span class="cv-edu-when">graduated 2019</span>
       </div>
-    </section>
-
-    <section class="cv-section">
-      <h2 class="cv-h">languages</h2>
-      <p style="margin:0;color:var(--fg);">English · Bengali · Hindi — all at working-conversation level.</p>
     </section>
 
     <footer class="cv-foot">
