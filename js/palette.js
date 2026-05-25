@@ -7,8 +7,7 @@
   var COMMANDS = [
     { cat: 'nav',   name: 'about',     run: function(){ goto('#about'); } },
     { cat: 'nav',   name: 'work',      run: function(){ goto('#work'); } },
-    { cat: 'nav',   name: 'contributions', run: function(){ goto('#contributions'); } },
-    { cat: 'nav',   name: 'oss',       run: function(){ goto('#oss'); } },
+    { cat: 'nav',   name: 'projects',  run: function(){ goto('#projects'); } },
     { cat: 'nav',   name: 'notes',     run: function(){ goto('#notes'); } },
     { cat: 'nav',   name: 'contact',   run: function(){ goto('#contact'); } },
     { cat: 'play',  name: 'snake game', run: function(){ closePalette(); window.location.href = 'game.html'; } },

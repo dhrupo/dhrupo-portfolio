@@ -237,45 +237,26 @@ h3.cmd::after {
 .work-card p { margin: 6px 0; color: var(--fg-muted); font-size: 13px; }
 .work-card .stack { color: var(--cmd); font-size: 12px; margin-top: 12px; }
 
-/* ── OSS cards ───────────────────────────────────────────────── */
-.oss-grid {
+/* ── Projects cards ─────────────────────────────────────────── */
+.projects-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
   margin-top: 8px;
 }
-.oss-card {
+.project-card {
   display: block; padding: 14px 16px;
   background: var(--bg-elev); border: 1px solid var(--border); border-radius: 6px;
   color: var(--fg);
   transition: transform .15s ease, border-color .2s ease;
 }
-.oss-card:hover { transform: translateY(-2px); border-color: var(--prompt); text-decoration: none; }
-.oss-card h4 { margin: 0 0 6px; color: var(--fg-strong); font-size: 14px; }
-.oss-card .pkg {
+.project-card:hover { transform: translateY(-2px); border-color: var(--prompt); text-decoration: none; }
+.project-card h4 { margin: 0 0 6px; color: var(--fg-strong); font-size: 14px; }
+.project-card .pkg {
   font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
   background: var(--accent); color: var(--bg); padding: 2px 6px; border-radius: 3px;
   vertical-align: middle; font-weight: 700;
 }
-.oss-card p { margin: 4px 0; color: var(--fg-muted); font-size: 12px; }
-.oss-card .stack { color: var(--cmd); font-size: 11px; margin-top: 8px; }
-
-/* ── Contributions cards ────────────────────────────────────── */
-.contrib-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
-  margin-top: 16px;
-}
-.contrib-card {
-  padding: 16px;
-  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 6px;
-  transition: border-color .2s ease, transform .15s ease;
-}
-.contrib-card:hover { border-color: var(--prompt); transform: translateY(-2px); }
-.contrib-tag {
-  display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
-  color: var(--cmd); margin-bottom: 8px;
-}
-.contrib-card h4 { margin: 0 0 8px; color: var(--fg-strong); font-size: 15px; }
-.contrib-card p { margin: 0; color: var(--fg-muted); font-size: 12px; line-height: 1.55; }
-.contrib-card em { color: var(--accent); font-style: normal; }
+.project-card p { margin: 4px 0; color: var(--fg-muted); font-size: 12px; }
+.project-card .stack { color: var(--cmd); font-size: 11px; margin-top: 8px; }
 
 /* ── Notes list ─────────────────────────────────────────────── */
 .notes-list { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 10px; }
@@ -460,7 +441,7 @@ h3.cmd::after {
 @media (max-width: 640px) {
   .nav-links { display: none; }
   .kbd-hint { display: none; }
-  .work-grid, .oss-grid, .contrib-grid { grid-template-columns: 1fr; }
+  .work-grid, .projects-grid { grid-template-columns: 1fr; }
   .hero-name { font-size: 24px; }
   .timeline li { grid-template-columns: 1fr; gap: 4px; }
   .timeline .when { font-size: 11px; }

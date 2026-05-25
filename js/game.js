@@ -10,8 +10,7 @@
   var SECTIONS = [
     { key: 'about',         label: 'about',    desc: 'Senior Software Engineer @ WPManageNinja. PHP, Vue 3, React, Gutenberg, REST.', href: 'index.html#about' },
     { key: 'work',          label: 'work',     desc: 'Fluent Forms (700K+ installs) and Fluent Player — team products in WordPress.', href: 'index.html#work' },
-    { key: 'contributions', label: 'contrib',  desc: 'WordPress OSS, Laravel × AI, WordPress × AI — areas I keep showing up in.',      href: 'index.html#contributions' },
-    { key: 'oss',           label: 'oss',      desc: '10 personal projects on GitHub & npm — mincut-context, codex-map, workmem…',     href: 'index.html#oss' },
+    { key: 'projects',      label: 'projects', desc: '10 personal projects on GitHub & npm — mincut-context, codex-map, workmem…',     href: 'index.html#projects' },
     { key: 'notes',         label: 'notes',    desc: 'Short essays on plugin engineering & AI dev-tooling. First drafts coming soon.', href: 'index.html#notes' },
     { key: 'contact',       label: 'contact',  desc: 'dhrupo@gmail.com · github.com/dhrupo · Sylhet, Bangladesh.',                     href: 'index.html#contact' }
   ];
@@ -130,7 +129,7 @@
       ctx.font = '12px JetBrains Mono, monospace';
       ctx.fillStyle = color('--fg-muted');
       var hint = won
-        ? 'all six sections discovered — esc to return · R to play again'
+        ? 'all five sections discovered — esc to return · R to play again'
         : (paused ? 'press P to resume' : 'press R to restart · esc to return');
       ctx.fillText(hint, canvas.width/2, canvas.height/2 + 12);
 
