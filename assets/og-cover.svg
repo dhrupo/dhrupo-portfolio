@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0d1117"/>
+  <g font-family="JetBrains Mono, ui-monospace, monospace" font-size="28" fill="#c9d1d9">
+    <text x="80" y="120"><tspan fill="#56d364">~</tspan> <tspan fill="#79c0ff">whoami</tspan></text>
+    <text x="80" y="200" font-size="72" font-weight="700" fill="#f0f6fc">Niluthpal Purkayastha</text>
+    <text x="80" y="260" fill="#8b949e">// aka <tspan fill="#ff7b72">dhrupo</tspan> · Senior Software Engineer @ WPManageNinja</text>
+    <text x="80" y="300" fill="#8b949e">// Sylhet, Bangladesh · on GitHub since 2018</text>
+    <text x="80" y="420"><tspan fill="#56d364">~</tspan> <tspan fill="#79c0ff">ls</tspan> ./recent/</text>
+    <text x="80" y="470" fill="#c9d1d9">  Fluent Forms <tspan fill="#8b949e">// 700K+ installs</tspan></text>
+    <text x="80" y="510" fill="#c9d1d9">  Fluent Player <tspan fill="#8b949e">// video for WordPress</tspan></text>
+    <text x="80" y="550" fill="#c9d1d9">  mincut-context <tspan fill="#8b949e">// context for AI agents</tspan></text>
+  </g>
+  <rect x="80" y="585" width="14" height="20" fill="#56d364"/>
+</svg>
