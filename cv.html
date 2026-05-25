@@ -103,18 +103,23 @@
     .cv-job li { margin-bottom: 3px; color: var(--fg); }
     .cv-job li::marker { color: var(--prompt); }
 
-    .cv-projects { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; }
-    .cv-proj-row {
-      display: grid; grid-template-columns: max-content 1fr; gap: 10px;
-      align-items: baseline;
+    .cv-projects {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 4px;
     }
+    .cv-proj {
+      padding-left: 14px; text-indent: -14px;
+      color: var(--fg);
+      font-size: 12.5px; line-height: 1.5;
+    }
+    .cv-proj::before { content: "› "; color: var(--prompt); }
     .cv-proj-name {
       font-family: "JetBrains Mono", ui-monospace, monospace;
-      font-size: 12px; font-weight: 700; color: var(--fg-strong);
+      font-weight: 700; color: var(--fg-strong); font-size: 12px;
+      text-decoration: none;
     }
-    .cv-proj-name a { color: var(--fg-strong); text-decoration: none; }
-    .cv-proj-name a:hover { color: var(--prompt); text-decoration: underline; }
-    .cv-proj-desc { color: var(--fg-muted); font-size: 12px; }
+    .cv-proj-name:hover { color: var(--prompt); text-decoration: underline; }
+    .cv-proj-meta { color: var(--cmd); font-size: 11.5px; }
 
     .cv-skills { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; }
     .cv-skills dt {
@@ -191,10 +196,10 @@
       .cv-job ul { margin: 2px 0 0; padding-left: 14px; }
       .cv-job li { margin-bottom: 1px; font-size: 10.5px; }
 
-      .cv-projects { gap: 4px 18px; }
-      .cv-proj-row { gap: 8px; }
-      .cv-proj-name, .cv-proj-desc { font-size: 10px; }
-      .cv-proj-desc { line-height: 1.4; }
+      .cv-projects { gap: 2px; }
+      .cv-proj { font-size: 10.5px; line-height: 1.38; padding-left: 12px; text-indent: -12px; }
+      .cv-proj-name { font-size: 10px; }
+      .cv-proj-meta { font-size: 10px; }
 
       .cv-skills { gap: 3px 14px; }
       .cv-skills dt { font-size: 9.5px; }
@@ -298,40 +303,48 @@
 
     <section class="cv-section">
       <h2 class="cv-h">selected open-source &amp; side projects</h2>
-      <div class="cv-projects">
-        <div class="cv-proj-row">
-          <span class="cv-proj-name"><a href="https://github.com/dhrupo/mincut-context" target="_blank" rel="noopener">mincut-context</a></span>
-          <span class="cv-proj-desc">Token-minimal context selection for AI coding agents — symbol graph + personalized PageRank + budget-constrained min-cut. npm · TypeScript · 261 tests · 88.6% cov.</span>
-        </div>
-        <div class="cv-proj-row">
-          <span class="cv-proj-name"><a href="https://github.com/dhrupo/codex-map" target="_blank" rel="noopener">codex-map</a></span>
-          <span class="cv-proj-desc">Visual dashboard for inspecting and mapping your Codex CLI setup. npm · JavaScript.</span>
-        </div>
-        <div class="cv-proj-row">
-          <span class="cv-proj-name"><a href="https://github.com/dhrupo/codex-claude-bridge" target="_blank" rel="noopener">codex-claude-bridge</a></span>
-          <span class="cv-proj-desc">Use Claude Code from inside Codex — MCP server + helper CLI. npm (<code>@dhrupo/codex-claude-bridge</code>).</span>
-        </div>
-        <div class="cv-proj-row">
-          <span class="cv-proj-name"><a href="https://github.com/dhrupo/workmem" target="_blank" rel="noopener">workmem</a></span>
-          <span class="cv-proj-desc">Recheck-backed working memory for AI coding workflows — compresses context packets and remembers prior findings.</span>
-        </div>
-        <div class="cv-proj-row">
-          <span class="cv-proj-name"><a href="https://github.com/dhrupo/growth-insights" target="_blank" rel="noopener">growth-insights</a></span>
-          <span class="cv-proj-desc">Laravel + Vue dashboard turning GitHub activity into growth signals; Gemini-enhanced weekly coaching. Element Plus · ECharts.</span>
-        </div>
-        <div class="cv-proj-row">
-          <span class="cv-proj-name"><a href="https://github.com/dhrupo/local-chat" target="_blank" rel="noopener">local-chat</a></span>
-          <span class="cv-proj-desc">Laravel 12 + Vue 3 LAN chat with realtime text + WebRTC voice/video; Reverb + Echo for transport.</span>
-        </div>
-        <div class="cv-proj-row">
-          <span class="cv-proj-name"><a href="https://github.com/dhrupo/notifix" target="_blank" rel="noopener">notifix</a></span>
-          <span class="cv-proj-desc">WordPress plugin: realtime social proof via an adapter-based event pipeline (Pusher / Ably transports, normalized event store).</span>
-        </div>
-        <div class="cv-proj-row">
-          <span class="cv-proj-name"><a href="https://github.com/dhrupo/fluent-noc" target="_blank" rel="noopener">fluent-noc</a></span>
-          <span class="cv-proj-desc">WordPress NOC manager — Gutenberg-block PDF templates, QR-verified certificates, email pipeline.</span>
-        </div>
-      </div>
+      <ul class="cv-projects">
+        <li class="cv-proj">
+          <a class="cv-proj-name" href="https://github.com/dhrupo/mincut-context" target="_blank" rel="noopener">mincut-context</a> —
+          Token-minimal context selection for AI coding agents (symbol graph + personalized PageRank + budget-constrained min-cut).
+          <span class="cv-proj-meta">TypeScript · npm · 261 tests · 88.6% cov</span>
+        </li>
+        <li class="cv-proj">
+          <a class="cv-proj-name" href="https://github.com/dhrupo/codex-map" target="_blank" rel="noopener">codex-map</a> —
+          Visual dashboard for inspecting and mapping your Codex CLI setup.
+          <span class="cv-proj-meta">JavaScript · npm</span>
+        </li>
+        <li class="cv-proj">
+          <a class="cv-proj-name" href="https://github.com/dhrupo/codex-claude-bridge" target="_blank" rel="noopener">codex-claude-bridge</a> —
+          Use Claude Code from inside Codex; MCP server plus helper CLI.
+          <span class="cv-proj-meta">JavaScript · npm (@dhrupo/codex-claude-bridge)</span>
+        </li>
+        <li class="cv-proj">
+          <a class="cv-proj-name" href="https://github.com/dhrupo/workmem" target="_blank" rel="noopener">workmem</a> —
+          Recheck-backed working memory for AI coding workflows; compresses context packets and remembers prior findings.
+          <span class="cv-proj-meta">JavaScript</span>
+        </li>
+        <li class="cv-proj">
+          <a class="cv-proj-name" href="https://github.com/dhrupo/growth-insights" target="_blank" rel="noopener">growth-insights</a> —
+          Laravel + Vue dashboard turning GitHub activity into growth signals with Gemini-enhanced weekly coaching.
+          <span class="cv-proj-meta">PHP · Vue 3 · Element Plus · ECharts</span>
+        </li>
+        <li class="cv-proj">
+          <a class="cv-proj-name" href="https://github.com/dhrupo/local-chat" target="_blank" rel="noopener">local-chat</a> —
+          LAN chat with realtime text and WebRTC voice/video; Reverb + Echo transport.
+          <span class="cv-proj-meta">Laravel 12 · Vue 3 · WebRTC</span>
+        </li>
+        <li class="cv-proj">
+          <a class="cv-proj-name" href="https://github.com/dhrupo/notifix" target="_blank" rel="noopener">notifix</a> —
+          WordPress plugin for realtime social proof via an adapter-based event pipeline (Pusher / Ably).
+          <span class="cv-proj-meta">PHP</span>
+        </li>
+        <li class="cv-proj">
+          <a class="cv-proj-name" href="https://github.com/dhrupo/fluent-noc" target="_blank" rel="noopener">fluent-noc</a> —
+          WordPress NOC manager with Gutenberg-block PDF templates, QR-verified certificates, and email pipeline.
+          <span class="cv-proj-meta">PHP</span>
+        </li>
+      </ul>
     </section>
 
     <section class="cv-section">
