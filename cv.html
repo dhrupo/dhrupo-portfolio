@@ -53,8 +53,9 @@
       margin: 0 0 4px; letter-spacing: -.5px; line-height: 1.15;
     }
     .cv-name .at { color: var(--prompt); font-weight: 400; margin-right: 6px; }
-    .cv-role { margin: 0; color: var(--fg-muted); font-size: 13px; }
-    .cv-role strong { color: var(--accent); font-weight: 600; }
+    .cv-role-stack { margin: 6px 0 0; display: flex; flex-direction: column; gap: 2px; }
+    .cv-role-stack p { margin: 0; color: var(--fg-muted); font-size: 13px; line-height: 1.45; }
+    .cv-role-stack p strong { color: var(--accent); font-weight: 600; }
     .cv-contact {
       text-align: right;
       font-family: "JetBrains Mono", ui-monospace, monospace;
@@ -170,7 +171,8 @@
 
       .cv-header { padding-bottom: 10px; margin-bottom: 12px; border-bottom-width: 1.5px; }
       .cv-name { font-size: 19px; margin-bottom: 2px; }
-      .cv-role { font-size: 11px; }
+      .cv-role-stack { margin-top: 4px; gap: 1px; }
+      .cv-role-stack p { font-size: 10.5px; line-height: 1.4; }
       .cv-contact { font-size: 9.5px; line-height: 1.5; }
 
       .cv-summary { font-size: 11px; margin-bottom: 12px; }
@@ -236,7 +238,12 @@
     <header class="cv-header">
       <div>
         <h1 class="cv-name"><span class="at">$</span>Niluthpal Purkayastha</h1>
-        <p class="cv-role">Senior Software Engineer · <strong>WPManageNinja</strong> · Sylhet, Bangladesh · UTC+6</p>
+        <div class="cv-role-stack">
+          <p>Senior Software Engineer</p>
+          <p><strong>WPManageNinja</strong></p>
+          <p>Sylhet, Bangladesh</p>
+          <p>UTC+6</p>
+        </div>
       </div>
       <address class="cv-contact">
         <div><a href="mailto:dhrupo@gmail.com">dhrupo@gmail.com</a></div>
