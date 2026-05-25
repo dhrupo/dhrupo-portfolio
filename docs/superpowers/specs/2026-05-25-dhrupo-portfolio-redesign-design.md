@@ -56,13 +56,15 @@ Direction **C — Terminal / dev-tool**, with **day + dark mode toggle**.
 
 ## Information architecture (single page, anchor nav)
 
+Page sections render in this top-to-bottom order. Nav exposes a subset (5 anchors) to stay uncluttered; `experience` and `skills` live under the `about` anchor visually but are not separate nav items.
+
 ```
 nav (sticky):  dhrupo · about · work · oss · notes · contact · ☼/☾
 ─────────────────────────────────────────────────────────────────
 hero:          ~ whoami            (typed in, blinking cursor)
 about:         ~ cat about.md      (2 short paragraphs)
-experience:    ~ ls ./experience/  (vertical timeline)
-skills:        ~ cat skills.json   (4 grouped categories)
+experience:    ~ ls ./experience/  (vertical timeline — under #about)
+skills:        ~ cat skills.json   (4 grouped categories — under #about)
 work:          ~ ls ./work/        (Fluent Forms + Fluent Player, 2 large cards)
 oss:           ~ ls ./oss/         (10 npm + plugin cards in grid)
 notes:         ~ ls ./notes/       (coming soon placeholder)
@@ -178,9 +180,10 @@ Overlay modal styled as terminal prompt:
 ### Live footer ticker
 
 - Fixed bottom, collapsible
-- Format: `$ uptime — 7 years coding · last commit Nh ago · build <sha> · HH:MM UTC+6`
-- "last commit" fetched from `https://api.github.com/users/dhrupo/events/public` on load, cached 1hr in `localStorage`
+- Format: `$ uptime — 7 years coding · last commit Nh ago (<repo>) · HH:MM UTC+6`
+- "last commit" fetched from `https://api.github.com/users/dhrupo/events/public` on load, picks the most recent `PushEvent`, shows relative time + repo name, cached 1hr in `localStorage`
 - "local time" updates every minute, no jitter
+- No build SHA shown (no build step); the deployed Netlify commit is identifiable via the GitHub repo
 
 ### Cursor blink on headings
 
@@ -193,8 +196,8 @@ Overlay modal styled as terminal prompt:
 
 ### View-source easter eggs
 
-- ASCII art self-portrait
-- `<!-- if you're reading this... -->` recruiter-targeted comment block
+- ASCII art block at the top of `index.html` (terminal prompt motif, not a self-portrait)
+- HTML comment near the top with a short friendly note for anyone reading source (final wording drafted during implementation, kept under 6 lines)
 
 ## Accessibility
 
@@ -217,8 +220,8 @@ Overlay modal styled as terminal prompt:
 
 ## Performance
 
-- No framework, no Bootstrap, no jQuery, no particles.js
-- Single CSS file, single JS bundle of small modules (~3-4KB minified total)
+- No framework, no Bootstrap, no jQuery, no particles.js, no build step
+- Single CSS file plus four small JS files loaded with `<script defer>` (~3-4KB minified total combined)
 - JetBrains Mono via `<link rel="preconnect">` + `font-display: swap`
 - No images in critical path
 - Lighthouse target: 100 / 100 / 100 / 100
