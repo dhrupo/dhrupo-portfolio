@@ -72,6 +72,15 @@
     });
   }
 
+  // Nav buttons that open dialogs (discoverable trigger for ⌘K and ?)
+  document.addEventListener('click', function(e){
+    if (e.target.closest('[data-open-cheatsheet]')) { e.preventDefault(); openCheat(); }
+    if (e.target.closest('[data-open-palette]')) {
+      e.preventDefault();
+      if (window.__palette) window.__palette.open();
+    }
+  });
+
   // Keyboard: ?, G+H, Esc
   var lastKey = '';
   var lastKeyAt = 0;

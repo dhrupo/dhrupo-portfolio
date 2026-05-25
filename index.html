@@ -71,10 +71,13 @@
       <nav class="nav-links" aria-label="Primary">
         <a href="#about">about</a>
         <a href="#work">work</a>
+        <a href="#contributions">contrib</a>
         <a href="#oss">oss</a>
         <a href="#notes">notes</a>
         <a href="#contact">contact</a>
       </nav>
+      <button class="kbd-hint" type="button" aria-label="Open command palette" data-open-palette title="Command palette"><kbd>⌘</kbd><kbd>K</kbd></button>
+      <button class="kbd-hint" type="button" aria-label="Show keyboard shortcuts" data-open-cheatsheet title="Keyboard shortcuts"><kbd>?</kbd></button>
       <button class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false" data-theme-toggle>
         <span class="theme-icon" aria-hidden="true">☾</span>
       </button>
@@ -94,12 +97,13 @@
         <a class="btn" href="https://linkedin.com/in/niluthpal-purkayastha" target="_blank" rel="noopener">linkedin</a>
         <button class="btn" type="button" data-copy="dhrupo@gmail.com">email</button>
       </div>
+      <p class="hero-tip">// tip — press <kbd>⌘K</kbd> for the command palette · <kbd>?</kbd> for all shortcuts</p>
     </section>
 
     <section id="about" class="section" aria-labelledby="about-cmd">
       <h2 class="cmd" id="about-cmd"><span class="prompt">~</span> <span class="verb">cat</span> about.md</h2>
       <div class="prose">
-        <p>I build WordPress products people actually use — currently <strong>Fluent Forms</strong> (700K+ active sites) and <strong>Fluent Player</strong>, where I work across PHP, Vue 3, React, Gutenberg, and REST APIs.</p>
+        <p>I work on WordPress products people actually use — part of the team behind <strong>Fluent Forms</strong> (700K+ active sites) and <strong>Fluent Player</strong>, where I'm across PHP, Vue 3, React, Gutenberg, and REST APIs.</p>
         <p>Outside of plugin work, I build small <strong>AI dev-tooling</strong> — context selectors, MCP bridges, CLI helpers — most of it open source on npm. The goal is the same in both worlds: ship the smallest thing that does the job well.</p>
       </div>
 
@@ -136,6 +140,28 @@
       </div>
     </section>
 
+    <section id="contributions" class="section" aria-labelledby="contributions-cmd">
+      <h2 class="cmd" id="contributions-cmd"><span class="prompt">~</span> <span class="verb">ls</span> ./contributions/</h2>
+      <p class="muted">// areas where I keep showing up — not lone-wolf projects, but ongoing contributions to shared things</p>
+      <div class="contrib-grid">
+        <div class="contrib-card">
+          <span class="contrib-tag">wordpress · oss</span>
+          <h4>WordPress OSS</h4>
+          <p>Patches, issues, and reviews across the WordPress plugin ecosystem — including the Fluent Forms free repo, helper addons (Calculation Captcha, NOC, WooCommerce bridge), and the wider WPManageNinja open-source surface.</p>
+        </div>
+        <div class="contrib-card">
+          <span class="contrib-tag">laravel · ai</span>
+          <h4>Laravel × AI</h4>
+          <p>Building Laravel-shaped homes for AI features — Gemini-enhanced analytics in <em>growth-insights</em>, Reverb / WebRTC / realtime AI plumbing in <em>local-chat</em>, and small experiments around evidence-traceable scoring.</p>
+        </div>
+        <div class="contrib-card">
+          <span class="contrib-tag">wordpress · ai</span>
+          <h4>WordPress × AI</h4>
+          <p>Wiring LLMs and MCP into the WordPress workflow — pre-PR review automation for plugin repos (<em>codex-review</em>), adapter-pattern realtime pipelines (<em>notifix</em>), and patterns for adding AI to forms / players without breaking the platform.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="oss" class="section" aria-labelledby="oss-cmd">
       <h2 class="cmd" id="oss-cmd"><span class="prompt">~</span> <span class="verb">ls</span> ./oss/</h2>
       <div class="oss-grid">
@@ -154,7 +180,29 @@
 
     <section id="notes" class="section" aria-labelledby="notes-cmd">
       <h2 class="cmd" id="notes-cmd"><span class="prompt">~</span> <span class="verb">ls</span> ./notes/</h2>
-      <p class="muted">// coming soon — short essays on plugin engineering &amp; AI dev tooling</p>
+      <p class="muted">// short essays on plugin engineering &amp; AI dev tooling — first drafts coming soon</p>
+      <ul class="notes-list">
+        <li class="note">
+          <span class="note-meta"><span class="note-tag">draft</span><span class="note-date">2026-06</span></span>
+          <h4>min-cut over grep: smaller context for coding agents</h4>
+          <p>Why grep is the wrong primitive for picking what an agent should read, and how a symbol graph + personalized PageRank + budget-constrained min-cut beats it on real repos.</p>
+        </li>
+        <li class="note">
+          <span class="note-meta"><span class="note-tag">draft</span><span class="note-date">2026-06</span></span>
+          <h4>two months of shipping AI dev-tools — what stuck</h4>
+          <p>mincut-context, codex-map, codex-claude-bridge, workmem. What I learned about npm publishing, MCP server shape, and what tools survived my own daily use.</p>
+        </li>
+        <li class="note">
+          <span class="note-meta"><span class="note-tag">upcoming</span><span class="note-date">2026-07</span></span>
+          <h4>working on a 700K-install plugin as a team</h4>
+          <p>How a long-running WordPress plugin team actually ships — code review rhythm, free / pro coexistence, deprecations, and the kind of bugs only scale produces.</p>
+        </li>
+        <li class="note">
+          <span class="note-meta"><span class="note-tag">upcoming</span><span class="note-date">2026-07</span></span>
+          <h4>WordPress + AI: small adapters, big leverage</h4>
+          <p>Notes on wiring LLMs into WordPress without pretending the platform is something it isn't — adapter patterns, queue-backed jobs, and where AI actually helps users.</p>
+        </li>
+      </ul>
     </section>
 
     <section id="contact" class="section" aria-labelledby="contact-cmd">

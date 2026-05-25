@@ -113,6 +113,22 @@ a:focus-visible, button:focus-visible, [data-copy]:focus-visible {
 }
 .theme-toggle:hover { border-color: var(--prompt); color: var(--prompt); }
 
+/* nav kbd hint buttons (discoverable ⌘K / ? triggers) */
+.kbd-hint {
+  background: transparent; border: 1px solid var(--border); color: var(--fg-muted);
+  padding: 4px 8px; border-radius: 4px;
+  cursor: pointer; font-family: inherit;
+  display: inline-flex; align-items: center; gap: 4px;
+  transition: border-color .2s ease, color .2s ease;
+}
+.kbd-hint:hover { border-color: var(--prompt); color: var(--prompt); }
+.kbd-hint kbd {
+  background: var(--bg); border: 1px solid var(--border); border-radius: 3px;
+  padding: 1px 5px; font-family: inherit; font-size: 11px;
+  color: inherit;
+}
+.kbd-hint:hover kbd { border-color: var(--prompt); }
+
 /* ── Main / sections ─────────────────────────────────────────── */
 main { max-width: 760px; margin: 0 auto; padding: 0 24px 56px; }
 
@@ -160,6 +176,14 @@ h3.cmd::after {
 .hero-ctas {
   display: flex; flex-wrap: wrap; gap: 10px;
   margin-top: 24px;
+}
+.hero-tip {
+  margin: 20px 0 0; color: var(--fg-muted); font-size: 12px;
+}
+.hero-tip kbd {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 3px;
+  padding: 1px 6px; font-family: inherit; font-size: 11px;
+  color: var(--fg-strong);
 }
 .btn {
   display: inline-block; padding: 8px 14px;
@@ -233,6 +257,43 @@ h3.cmd::after {
 }
 .oss-card p { margin: 4px 0; color: var(--fg-muted); font-size: 12px; }
 .oss-card .stack { color: var(--cmd); font-size: 11px; margin-top: 8px; }
+
+/* ── Contributions cards ────────────────────────────────────── */
+.contrib-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  margin-top: 16px;
+}
+.contrib-card {
+  padding: 16px;
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 6px;
+  transition: border-color .2s ease, transform .15s ease;
+}
+.contrib-card:hover { border-color: var(--prompt); transform: translateY(-2px); }
+.contrib-tag {
+  display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--cmd); margin-bottom: 8px;
+}
+.contrib-card h4 { margin: 0 0 8px; color: var(--fg-strong); font-size: 15px; }
+.contrib-card p { margin: 0; color: var(--fg-muted); font-size: 12px; line-height: 1.55; }
+.contrib-card em { color: var(--accent); font-style: normal; }
+
+/* ── Notes list ─────────────────────────────────────────────── */
+.notes-list { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 10px; }
+.note {
+  padding: 14px 16px;
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 6px;
+  transition: border-color .2s ease;
+}
+.note:hover { border-color: var(--prompt); }
+.note-meta { display: flex; gap: 10px; align-items: center; margin-bottom: 6px; font-size: 11px; }
+.note-tag {
+  display: inline-block; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent);
+  padding: 2px 8px; border-radius: 3px; font-weight: 700;
+}
+.note-date { color: var(--fg-muted); }
+.note h4 { margin: 0 0 6px; color: var(--fg-strong); font-size: 15px; line-height: 1.3; }
+.note p { margin: 0; color: var(--fg-muted); font-size: 13px; }
 
 /* ── Contact list ───────────────────────────────────────────── */
 .contact-list { list-style: none; padding: 0; margin: 16px 0 0; }
@@ -326,7 +387,8 @@ h3.cmd::after {
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 640px) {
   .nav-links { display: none; }
-  .work-grid, .oss-grid { grid-template-columns: 1fr; }
+  .kbd-hint { display: none; }
+  .work-grid, .oss-grid, .contrib-grid { grid-template-columns: 1fr; }
   .hero-name { font-size: 24px; }
   .timeline li { grid-template-columns: 1fr; gap: 4px; }
   .timeline .when { font-size: 11px; }

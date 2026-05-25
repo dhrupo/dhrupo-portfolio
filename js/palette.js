@@ -7,6 +7,7 @@
   var COMMANDS = [
     { cat: 'nav',   name: 'about',     run: function(){ goto('#about'); } },
     { cat: 'nav',   name: 'work',      run: function(){ goto('#work'); } },
+    { cat: 'nav',   name: 'contributions', run: function(){ goto('#contributions'); } },
     { cat: 'nav',   name: 'oss',       run: function(){ goto('#oss'); } },
     { cat: 'nav',   name: 'notes',     run: function(){ goto('#notes'); } },
     { cat: 'nav',   name: 'contact',   run: function(){ goto('#contact'); } },
@@ -104,6 +105,7 @@
     if (!c) return;
     var key = c.cat + ' ' + c.name;
     recent = [key].concat(recent.filter(function(k){ return k !== key; })).slice(0, 5);
+    closePalette();
     c.run();
   }
 
@@ -136,4 +138,7 @@
       if (dialog.open) closePalette(); else openPalette();
     }
   });
+
+  // Expose for click-driven openers
+  window.__palette = { open: openPalette, close: closePalette };
 })();
