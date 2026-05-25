@@ -8,18 +8,20 @@
   canvas.height = ROWS * CELL;
 
   var SECTIONS = [
-    { key: 'about',         label: 'about',    desc: 'Senior Software Engineer @ WPManageNinja. PHP, Vue 3, React, Gutenberg, REST.', href: 'index.html#about' },
-    { key: 'work',          label: 'work',     desc: 'Fluent Forms (700K+ installs) and Fluent Player — team products in WordPress.', href: 'index.html#work' },
-    { key: 'projects',      label: 'projects', desc: '10 personal projects on GitHub & npm — mincut-context, codex-map, workmem…',     href: 'index.html#projects' },
-    { key: 'notes',         label: 'notes',    desc: 'Short essays on plugin engineering & AI dev-tooling. First drafts coming soon.', href: 'index.html#notes' },
-    { key: 'contact',       label: 'contact',  desc: 'dhrupo@gmail.com · github.com/dhrupo · Sylhet, Bangladesh.',                     href: 'index.html#contact' }
+    { key: 'about',    label: 'about',    desc: 'Senior Software Engineer @ WPManageNinja. PHP, Vue 3, React, Gutenberg, REST.',     href: 'index.html#about' },
+    { key: 'work',     label: 'work',     desc: 'Fluent Forms (700K+ installs) and Fluent Player — team products in WordPress.',      href: 'index.html#work' },
+    { key: 'projects', label: 'projects', desc: '10 personal projects on GitHub & npm — mincut-context, codex-map, workmem…',         href: 'index.html#projects' },
+    { key: 'notes',    label: 'notes',    desc: 'Short essays on plugin engineering & AI dev-tooling. First drafts coming soon.',     href: 'index.html#notes' },
+    { key: 'contact',  label: 'contact',  desc: 'dhrupo@gmail.com · github.com/dhrupo · Sylhet, Bangladesh.',                         href: 'index.html#contact' }
   ];
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function color(name){
     return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || '#000';
   }
 
-  var snake, dir, pendingDir, food, foundKeys, score, alive, won, paused, tickInterval, tickHandle;
+  var snake, dir, pendingDir, food, foundKeys, score, alive, won, paused, tickIntervalMs, lastTickAt;
 
   function reset(){
     snake = [{x:5,y:Math.floor(ROWS/2)}, {x:4,y:Math.floor(ROWS/2)}, {x:3,y:Math.floor(ROWS/2)}];
@@ -30,7 +32,8 @@
     alive = true;
     won = false;
     paused = false;
-    tickInterval = 130;
+    tickIntervalMs = 130;
+    lastTickAt = 0;
     clearDiscoveries();
     spawnFood();
     updateHUD();
@@ -40,7 +43,7 @@
     var ul = document.getElementById('game-discoveries');
     while (ul && ul.firstChild) ul.removeChild(ul.firstChild);
     var empty = document.getElementById('game-empty');
-    if (empty) empty.style.display = 'block';
+    if (empty) empty.style.display = 'flex';
   }
 
   function spawnFood(){
@@ -72,7 +75,7 @@
       score += 100;
       foundKeys.push(food.section.key);
       addDiscovery(food.section);
-      tickInterval = Math.max(70, tickInterval - 6);
+      tickIntervalMs = Math.max(70, tickIntervalMs - 6);
       spawnFood();
       updateHUD();
     } else {
@@ -80,7 +83,7 @@
     }
   }
 
-  function draw(){
+  function draw(now){
     var bg = color('--bg');
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -93,13 +96,26 @@
       }
     }
 
-    // food
+    // food (with pulse)
     if (food) {
       var fx = food.x * CELL, fy = food.y * CELL;
+      var baseSize = CELL - 6;
+      var pulse = reduceMotion ? 1 : (1 + Math.sin(now / 180) * 0.08);
+      var size = baseSize * pulse;
+
+      // outer glow ring
+      if (!reduceMotion) {
+        ctx.globalAlpha = 0.3 + Math.sin(now / 180) * 0.15;
+        ctx.fillStyle = color('--accent');
+        ctx.fillRect(fx + 1, fy + 1, CELL - 2, CELL - 2);
+        ctx.globalAlpha = 1;
+      }
+
       ctx.fillStyle = color('--accent');
-      ctx.fillRect(fx + 3, fy + 3, CELL - 6, CELL - 6);
+      ctx.fillRect(fx + (CELL - size)/2, fy + (CELL - size)/2, size, size);
+
       ctx.fillStyle = color('--bg');
-      ctx.font = 'bold 9px JetBrains Mono, monospace';
+      ctx.font = 'bold 9px JetBrains Mono, ui-monospace, monospace';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(food.section.label.slice(0,4), fx + CELL/2, fy + CELL/2 + 1);
@@ -109,7 +125,7 @@
     for (var i = snake.length - 1; i >= 0; i--) {
       var s = snake[i];
       var inset = i === 0 ? 1 : 3;
-      ctx.fillStyle = i === 0 ? color('--prompt') : color('--prompt');
+      ctx.fillStyle = color('--prompt');
       ctx.globalAlpha = i === 0 ? 1 : Math.max(0.4, 1 - i * 0.06);
       ctx.fillRect(s.x*CELL + inset, s.y*CELL + inset, CELL - inset*2, CELL - inset*2);
     }
@@ -120,13 +136,13 @@
       ctx.fillStyle = 'rgba(0,0,0,0.72)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = color('--fg-strong');
-      ctx.font = 'bold 22px JetBrains Mono, monospace';
+      ctx.font = 'bold 22px JetBrains Mono, ui-monospace, monospace';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       var msg = won ? '$ tour complete ✓' : (paused ? '|| paused' : '$ game over');
       ctx.fillText(msg, canvas.width/2, canvas.height/2 - 16);
 
-      ctx.font = '12px JetBrains Mono, monospace';
+      ctx.font = '12px JetBrains Mono, ui-monospace, monospace';
       ctx.fillStyle = color('--fg-muted');
       var hint = won
         ? 'all five sections discovered — esc to return · R to play again'
@@ -140,17 +156,26 @@
     }
   }
 
-  function loop(){
-    tick();
-    draw();
-    tickHandle = setTimeout(loop, tickInterval);
+  function loop(now){
+    if (!lastTickAt) lastTickAt = now;
+    if (now - lastTickAt >= tickIntervalMs) {
+      tick();
+      lastTickAt = now;
+    }
+    draw(now);
+    requestAnimationFrame(loop);
   }
 
   function updateHUD(){
     var s = document.getElementById('game-score');
     var f = document.getElementById('game-found');
+    var t = document.getElementById('game-target');
+    var c = document.getElementById('discoveries-count');
+    var total = SECTIONS.length;
     if (s) s.textContent = String(score).padStart(3, '0');
-    if (f) f.textContent = foundKeys.length + '/' + SECTIONS.length;
+    if (f) f.textContent = foundKeys.length + ' / ' + total;
+    if (c) c.textContent = foundKeys.length + ' / ' + total;
+    if (t) t.textContent = won ? 'done ✓' : (food ? food.section.label : '—');
   }
 
   function addDiscovery(section){
@@ -195,7 +220,7 @@
     li.appendChild(link);
     ul.appendChild(li);
 
-    li.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    li.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
   }
 
   function changeDir(nx, ny){
@@ -218,10 +243,12 @@
     else if (k === 'Escape') { window.location.href = 'index.html'; }
   });
 
-  // Make canvas immediately focusable for keyboard play
+  var restartBtn = document.getElementById('game-restart');
+  if (restartBtn) restartBtn.addEventListener('click', function(){ reset(); canvas.focus(); });
+
   canvas.focus();
   canvas.addEventListener('click', function(){ canvas.focus(); });
 
   reset();
-  loop();
+  requestAnimationFrame(loop);
 })();

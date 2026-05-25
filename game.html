@@ -39,22 +39,63 @@
   <main class="game-main" id="main">
 
     <section class="game-stage" aria-label="Snake game board">
+
+      <div class="game-hud" role="status" aria-live="polite">
+        <div class="game-chip">
+          <span class="game-chip-label">score</span>
+          <strong id="game-score">000</strong>
+        </div>
+        <div class="game-chip">
+          <span class="game-chip-label">found</span>
+          <strong id="game-found">0 / 5</strong>
+        </div>
+        <div class="game-chip game-chip-target" title="The next labeled block to eat">
+          <span class="game-chip-label">next →</span>
+          <strong id="game-target">—</strong>
+        </div>
+        <div class="game-hud-spacer"></div>
+        <button class="btn game-btn" type="button" id="game-restart" aria-label="Restart game">↻ restart</button>
+      </div>
+
       <div class="game-frame">
         <canvas id="game-canvas" tabindex="0" aria-label="Snake game canvas — use arrow keys or WASD to move"></canvas>
         <div class="game-scanlines" aria-hidden="true"></div>
+        <div class="game-overlay-corner" aria-hidden="true"><span class="rec-dot"></span>REC · 1×</div>
       </div>
-      <div class="game-hud" role="status" aria-live="polite">
-        <span><span class="game-label">score</span> <strong id="game-score">000</strong></span>
-        <span><span class="game-label">found</span> <strong id="game-found">0/5</strong></span>
-        <span class="muted game-controls">arrows or WASD · R restart · esc back · P pause</span>
-      </div>
+
+      <p class="game-controls" aria-label="Keyboard controls">
+        <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd>
+        <span class="muted">or</span>
+        <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+        <span class="muted">move ·</span>
+        <kbd>R</kbd> <span class="muted">restart ·</span>
+        <kbd>P</kbd> <span class="muted">pause ·</span>
+        <kbd>Esc</kbd> <span class="muted">back</span>
+      </p>
+
       <p class="game-intro">// drive the snake into each labeled block to unlock that section. eat all five to complete the tour.</p>
     </section>
 
     <aside class="game-sidebar" aria-label="Discoveries">
-      <h3 class="cmd"><span class="prompt">~</span> <span class="verb">ls</span> ./discoveries/</h3>
-      <ul id="game-discoveries" class="discoveries" aria-live="polite"></ul>
-      <p class="muted game-hint" id="game-empty">// nothing yet — start playing</p>
+      <div class="game-sidebar-head">
+        <h3 class="cmd"><span class="prompt">~</span> <span class="verb">ls</span> ./discoveries/</h3>
+        <span class="discoveries-count" id="discoveries-count" aria-live="polite">0 / 5</span>
+      </div>
+      <div class="discoveries-wrap">
+        <ul id="game-discoveries" class="discoveries" aria-live="polite"></ul>
+        <div class="discoveries-empty" id="game-empty">
+<pre aria-hidden="true">   ┌────────────────┐
+   │                │
+   │  nothing yet   │
+   │                │
+   │  start eating  │
+   │     blocks     │
+   │                │
+   └────────────────┘
+</pre>
+          <p class="muted">// each eaten block lands here</p>
+        </div>
+      </div>
     </aside>
 
   </main>
