@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Niluthpal Purkayastha (dhrupo) — CV</title>
+  <meta name="description" content="CV for Niluthpal Purkayastha (dhrupo) — Senior Software Engineer at WPManageNinja. WordPress products for 700K+ sites; AI dev-tooling on the side.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <script>
+    (function(){
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch(e) {}
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── CV-specific layout (screen) ─────────────────────────── */
+    .cv-body { padding-bottom: 40px; }
+    .cv-toolbar {
+      max-width: 820px; margin: 24px auto 12px; padding: 0 24px;
+      display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    }
+    .cv-toolbar .spacer { flex: 1; }
+    .cv-toolbar .muted { color: var(--fg-muted); font-size: 12px; }
+
+    .cv-paper {
+      max-width: 820px; margin: 0 auto; padding: 56px 64px;
+      background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px;
+      color: var(--fg);
+      font-family: "Inter", -apple-system, system-ui, sans-serif;
+      font-size: 13px; line-height: 1.55;
+    }
+    .cv-header {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 24px;
+      border-bottom: 2px solid var(--border); padding-bottom: 18px; margin-bottom: 22px;
+    }
+    .cv-name {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 26px; font-weight: 700; color: var(--fg-strong);
+      margin: 0 0 4px; letter-spacing: -.5px; line-height: 1.15;
+    }
+    .cv-name .at { color: var(--prompt); font-weight: 400; margin-right: 6px; }
+    .cv-role { margin: 0; color: var(--fg-muted); font-size: 13px; }
+    .cv-role strong { color: var(--accent); font-weight: 600; }
+    .cv-contact {
+      text-align: right;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 11px; line-height: 1.7; color: var(--fg-muted);
+    }
+    .cv-contact a { color: var(--cmd); text-decoration: none; }
+    .cv-contact a:hover { text-decoration: underline; }
+    .cv-contact .key { color: var(--prompt); margin-right: 6px; }
+
+    .cv-summary {
+      margin: 0 0 26px;
+      color: var(--fg);
+      font-size: 13.5px;
+    }
+    .cv-summary strong { color: var(--fg-strong); font-weight: 600; }
+
+    .cv-section { margin-bottom: 22px; }
+    .cv-section:last-child { margin-bottom: 0; }
+    .cv-h {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 11px; font-weight: 700;
+      color: var(--prompt); text-transform: uppercase; letter-spacing: 2px;
+      margin: 0 0 12px; padding-bottom: 6px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .cv-h::before { content: "~ "; color: var(--fg-muted); font-weight: 400; }
+
+    .cv-job { margin-bottom: 14px; }
+    .cv-job:last-child { margin-bottom: 0; }
+    .cv-job-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+      margin-bottom: 4px;
+    }
+    .cv-job-title { font-weight: 600; color: var(--fg-strong); font-size: 14px; }
+    .cv-job-title .at { color: var(--fg-muted); font-weight: 400; margin: 0 4px; }
+    .cv-job-title .org { color: var(--accent); font-weight: 600; }
+    .cv-job-when {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 11px; color: var(--fg-muted); white-space: nowrap;
+    }
+    .cv-job-stack {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 11px; color: var(--cmd); margin: 2px 0 6px;
+    }
+    .cv-job ul { margin: 4px 0 0; padding-left: 18px; }
+    .cv-job li { margin-bottom: 3px; color: var(--fg); }
+    .cv-job li::marker { color: var(--prompt); }
+
+    .cv-projects { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; }
+    .cv-proj-row {
+      display: grid; grid-template-columns: max-content 1fr; gap: 10px;
+      align-items: baseline;
+    }
+    .cv-proj-name {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 12px; font-weight: 700; color: var(--fg-strong);
+    }
+    .cv-proj-name a { color: var(--fg-strong); text-decoration: none; }
+    .cv-proj-name a:hover { color: var(--prompt); text-decoration: underline; }
+    .cv-proj-desc { color: var(--fg-muted); font-size: 12px; }
+
+    .cv-skills { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; }
+    .cv-skills dt {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 11px; color: var(--prompt);
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .cv-skills dd { margin: 0; color: var(--fg); font-size: 12.5px; }
+
+    .cv-edu {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    }
+    .cv-edu-degree { color: var(--fg-strong); font-weight: 600; }
+    .cv-edu-school { color: var(--fg-muted); }
+    .cv-edu-when {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 11px; color: var(--fg-muted);
+    }
+
+    .cv-foot {
+      margin-top: 22px; padding-top: 14px;
+      border-top: 1px dashed var(--border);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 10px; color: var(--fg-muted);
+      display: flex; justify-content: space-between; gap: 12px;
+    }
+    .cv-foot a { color: var(--cmd); }
+
+    /* ── Print: clean white A4 ─────────────────────────────── */
+    @page { size: A4; margin: 14mm 14mm; }
+    @media print {
+      :root, :root[data-theme="dark"], :root[data-theme="light"] {
+        --bg: #ffffff;
+        --bg-elev: #ffffff;
+        --border: #c8d0d8;
+        --fg: #1a1f26;
+        --fg-muted: #5a6573;
+        --fg-strong: #0a0e14;
+        --prompt: #0d6e2c;
+        --cmd: #0a4fa0;
+        --accent: #b8341c;
+      }
+      body { background: #fff; }
+      .cv-toolbar, .nav, .ticker, .toast, .progress { display: none !important; }
+      .cv-paper {
+        max-width: none; margin: 0; padding: 0;
+        background: transparent; border: 0; border-radius: 0;
+        box-shadow: none;
+      }
+      .cv-name { font-size: 22px; }
+      .cv-paper, .cv-paper * { color-adjust: exact; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      a { color: inherit; text-decoration: none; }
+      .cv-contact a, .cv-proj-name a, .cv-foot a { color: var(--cmd); }
+      .cv-job { page-break-inside: avoid; }
+      .cv-section { page-break-inside: avoid; }
+    }
+
+    @media (max-width: 720px) {
+      .cv-paper { padding: 32px 24px; }
+      .cv-header { flex-direction: column; }
+      .cv-contact { text-align: left; }
+      .cv-projects { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="cv-body">
+
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><span class="brand-prompt">$</span> dhrupo<span class="status-dot" aria-label="Status: available"></span></a>
+      <span class="game-prompt">$ cat cv.txt</span>
+      <a class="btn" href="index.html">← back</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false" data-theme-toggle>
+        <span class="theme-icon" aria-hidden="true">☾</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="cv-toolbar">
+    <button class="btn" type="button" onclick="window.print()">⎙ print / save as PDF</button>
+    <span class="spacer"></span>
+    <span class="muted">// printing uses an A4 light-theme stylesheet · ⌘P also works</span>
+  </div>
+
+  <main class="cv-paper" id="cv">
+
+    <header class="cv-header">
+      <div>
+        <h1 class="cv-name"><span class="at">$</span>Niluthpal Purkayastha</h1>
+        <p class="cv-role">Senior Software Engineer · <strong>WPManageNinja</strong> · Sylhet, Bangladesh · UTC+6</p>
+      </div>
+      <address class="cv-contact">
+        <div><span class="key">email</span> <a href="mailto:dhrupo@gmail.com">dhrupo@gmail.com</a></div>
+        <div><span class="key">phone</span> +880 1789 783550</div>
+        <div><span class="key">site</span> <a href="https://dhrupo.netlify.app">dhrupo.netlify.app</a></div>
+        <div><span class="key">github</span> <a href="https://github.com/dhrupo">github.com/dhrupo</a></div>
+        <div><span class="key">linkedin</span> <a href="https://linkedin.com/in/niluthpal-purkayastha">in/niluthpal-purkayastha</a></div>
+        <div><span class="key">wp.org</span> <a href="https://profiles.wordpress.org/dhrupo/">profiles.wordpress.org/dhrupo</a></div>
+      </address>
+    </header>
+
+    <p class="cv-summary">
+      <strong>Full-stack engineer (PHP / Vue 3 / React)</strong> shipping production WordPress products and small AI dev-tooling. Part of the team behind <strong>Fluent Forms</strong> (700K+ active installs) and <strong>Fluent Player</strong> at WPManageNinja. On the side, I publish open-source agent context, MCP, and CLI tools on npm — most recently <strong>mincut-context</strong>, a graph-based context selector for AI coding agents.
+    </p>
+
+    <section class="cv-section">
+      <h2 class="cv-h">experience</h2>
+
+      <div class="cv-job">
+        <div class="cv-job-head">
+          <div class="cv-job-title">Senior Software Engineer <span class="at">@</span> <span class="org">WPManageNinja</span> <span class="cv-job-when">· remote</span></div>
+          <div class="cv-job-when">2022 — Now</div>
+        </div>
+        <div class="cv-job-stack">PHP · Vue 3 · React · Gutenberg blocks · Element Plus · MySQL · REST · Tailwind · Vite · PHPUnit · Playwright</div>
+        <ul>
+          <li>Build and maintain features across <strong>Fluent Forms</strong> free &amp; pro (form builder used by 700K+ active sites) and <strong>Fluent Player</strong> (video player for WordPress) — server-side PHP, admin Vue 3 SPAs, Gutenberg blocks, and REST APIs.</li>
+          <li>Ship vertical slices end-to-end: PHP services and policies, Vue admin UIs, public form runtime, and the conversational/save-and-resume flows; integrations include payments, Mailchimp, FluentCRM, BunnyCDN, Mux.</li>
+          <li>Cover behaviour with PHPUnit + Playwright; use PHPStan and a custom pre-PR review pipeline to keep a long-lived plugin codebase shippable.</li>
+          <li>Contribute add-ons and helpers: WooCommerce bridge, Calculation Captcha, NOC manager, plus internal tooling that speeds team review and release.</li>
+        </ul>
+      </div>
+
+      <!--
+        Pre-2022 employment placeholder — please confirm so I can fill in real companies + dates.
+        From the older CV: ASP .NET Developer, Technical Support Engineer, and Front-End Developer
+        (remote). I've left a single compact line below; tell me the real employers and ranges and
+        I'll expand them with quantified bullets.
+      -->
+      <div class="cv-job">
+        <div class="cv-job-head">
+          <div class="cv-job-title">Web / Front-End Developer <span class="at">·</span> <span class="org">remote &amp; freelance</span></div>
+          <div class="cv-job-when">2019 — 2022</div>
+        </div>
+        <div class="cv-job-stack">ASP .NET · React · Node.js · MSSQL · MongoDB · jQuery · Bootstrap</div>
+        <ul>
+          <li>Shipped client-facing web apps as front-end developer (remote) and earlier as an ASP .NET developer; covered Technical Support Engineer responsibilities in between roles.</li>
+          <li>Stack ranged from React + Node + Mongo SPAs to ASP .NET MVC backends on MSSQL; first exposure to maintaining production codebases used by paying customers.</li>
+          <li><em>Companies and exact dates: ask me — I&rsquo;ll plug them in once you share.</em></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-h">selected open-source &amp; side projects</h2>
+      <div class="cv-projects">
+        <div class="cv-proj-row">
+          <span class="cv-proj-name"><a href="https://github.com/dhrupo/mincut-context" target="_blank" rel="noopener">mincut-context</a></span>
+          <span class="cv-proj-desc">Token-minimal context selection for AI coding agents — symbol graph + personalized PageRank + budget-constrained min-cut. npm · TypeScript · 261 tests · 88.6% cov.</span>
+        </div>
+        <div class="cv-proj-row">
+          <span class="cv-proj-name"><a href="https://github.com/dhrupo/codex-map" target="_blank" rel="noopener">codex-map</a></span>
+          <span class="cv-proj-desc">Visual dashboard for inspecting and mapping your Codex CLI setup. npm · JavaScript.</span>
+        </div>
+        <div class="cv-proj-row">
+          <span class="cv-proj-name"><a href="https://github.com/dhrupo/codex-claude-bridge" target="_blank" rel="noopener">codex-claude-bridge</a></span>
+          <span class="cv-proj-desc">Use Claude Code from inside Codex — MCP server + helper CLI. npm (<code>@dhrupo/codex-claude-bridge</code>).</span>
+        </div>
+        <div class="cv-proj-row">
+          <span class="cv-proj-name"><a href="https://github.com/dhrupo/workmem" target="_blank" rel="noopener">workmem</a></span>
+          <span class="cv-proj-desc">Recheck-backed working memory for AI coding workflows — compresses context packets and remembers prior findings.</span>
+        </div>
+        <div class="cv-proj-row">
+          <span class="cv-proj-name"><a href="https://github.com/dhrupo/growth-insights" target="_blank" rel="noopener">growth-insights</a></span>
+          <span class="cv-proj-desc">Laravel + Vue dashboard turning GitHub activity into growth signals; Gemini-enhanced weekly coaching. Element Plus · ECharts.</span>
+        </div>
+        <div class="cv-proj-row">
+          <span class="cv-proj-name"><a href="https://github.com/dhrupo/local-chat" target="_blank" rel="noopener">local-chat</a></span>
+          <span class="cv-proj-desc">Laravel 12 + Vue 3 LAN chat with realtime text + WebRTC voice/video; Reverb + Echo for transport.</span>
+        </div>
+        <div class="cv-proj-row">
+          <span class="cv-proj-name"><a href="https://github.com/dhrupo/notifix" target="_blank" rel="noopener">notifix</a></span>
+          <span class="cv-proj-desc">WordPress plugin: realtime social proof via an adapter-based event pipeline (Pusher / Ably transports, normalized event store).</span>
+        </div>
+        <div class="cv-proj-row">
+          <span class="cv-proj-name"><a href="https://github.com/dhrupo/fluent-noc" target="_blank" rel="noopener">fluent-noc</a></span>
+          <span class="cv-proj-desc">WordPress NOC manager — Gutenberg-block PDF templates, QR-verified certificates, email pipeline.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-h">skills</h2>
+      <dl class="cv-skills">
+        <dt>languages</dt><dd>PHP · JavaScript · TypeScript · HTML · CSS · SQL</dd>
+        <dt>frontend</dt><dd>Vue 3 · React · Gutenberg blocks · Element Plus · Tailwind · Vite · Webpack</dd>
+        <dt>backend</dt><dd>WordPress · Laravel (10 / 11 / 12) · Node.js · MySQL · REST APIs · Reverb / Echo</dd>
+        <dt>ai / tooling</dt><dd>MCP servers · Codex / Claude Code workflows · npm publishing · GitHub Actions · PHPUnit · Playwright · PHPStan · Infection</dd>
+        <dt>also</dt><dd>WebRTC · Docker · Git · accessibility (WCAG AA) · pre-PR review automation</dd>
+      </dl>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-h">education</h2>
+      <div class="cv-edu">
+        <div>
+          <span class="cv-edu-degree">B.Sc. Computer Science &amp; Engineering</span>
+          <span class="cv-edu-school"> · Metropolitan University, Sylhet</span>
+        </div>
+        <span class="cv-edu-when">graduated 2019</span>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-h">languages</h2>
+      <p style="margin:0;color:var(--fg);">English · Bengali · Hindi — all at working-conversation level.</p>
+    </section>
+
+    <footer class="cv-foot">
+      <span>Live version: <a href="https://dhrupo.netlify.app/cv.html">dhrupo.netlify.app/cv.html</a></span>
+      <span>Last updated 2026-05-25</span>
+    </footer>
+
+  </main>
+
+  <script src="js/theme.js" defer></script>
+</body>
+</html>

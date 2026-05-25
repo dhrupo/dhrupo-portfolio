@@ -20,7 +20,7 @@
     { cat: 'open',  name: 'github',    run: function(){ openUrl('https://github.com/dhrupo'); } },
     { cat: 'open',  name: 'linkedin',  run: function(){ openUrl('https://linkedin.com/in/niluthpal-purkayastha'); } },
     { cat: 'open',  name: 'wordpress', run: function(){ openUrl('https://profiles.wordpress.org/dhrupo/'); } },
-    { cat: 'open',  name: 'resume',    run: function(){ openUrl('https://drive.google.com/file/d/1DuU2WIFN70kHioRdTSU-pgvZQTAWbRR-/view?usp=sharing'); } },
+    { cat: 'open',  name: 'cv',        run: function(){ window.location.href = 'cv.html'; } },
     { cat: 'sudo',  name: 'rm -rf ./boring-portfolio', run: runSudo, hidden: true }
   ];
 
