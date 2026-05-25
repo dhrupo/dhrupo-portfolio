@@ -35,17 +35,6 @@
     .btn-download {
       font-size: 14px; padding: 10px 18px; font-weight: 700;
     }
-    .btn-download .muted-inline {
-      color: color-mix(in srgb, var(--bg) 75%, var(--fg));
-      font-weight: 400; font-size: 11px; margin-left: 4px;
-    }
-    .btn-primary.btn-download:hover .muted-inline { color: color-mix(in srgb, var(--bg) 60%, var(--fg)); }
-    .link-only {
-      background: none; border: 0; padding: 0; cursor: pointer;
-      color: var(--fg-muted); font-family: inherit; font-size: 11px;
-      text-decoration: underline; text-decoration-style: dotted;
-    }
-    .link-only:hover { color: var(--cmd); }
 
     .cv-paper {
       max-width: 820px; margin: 0 auto; padding: 56px 64px;
@@ -239,12 +228,8 @@
 
   <div class="cv-toolbar">
     <a class="btn btn-primary btn-download" href="assets/cv.pdf" download="niluthpal-purkayastha-cv.pdf" id="cv-download">
-      ⬇ download PDF <span class="muted-inline">— 1 page · 316 KB · no browser headers</span>
+      ⬇ download PDF
     </a>
-    <span class="spacer"></span>
-    <button class="link-only" type="button" id="cv-print" title="Opens the browser print dialog. Browser will add date/URL/title unless you turn off Headers and footers.">
-      or print directly (adds browser headers unless you turn them off)
-    </button>
   </div>
 
   <main class="cv-paper" id="cv">
@@ -381,28 +366,12 @@
   <script>
     (function(){
       var dl = document.getElementById('cv-download');
-      var printBtn = document.getElementById('cv-print');
-
-      // Hijack ⌘P / Ctrl+P → trigger the clean PDF download instead of the browser print dialog.
       document.addEventListener('keydown', function(e){
         if ((e.metaKey || e.ctrlKey) && (e.key === 'p' || e.key === 'P')) {
           e.preventDefault();
           if (dl) dl.click();
         }
       });
-
-      // Explicit "print anyway" path with a heads-up that the browser will add headers.
-      if (printBtn) {
-        printBtn.addEventListener('click', function(){
-          var ok = window.confirm(
-            'Your browser print dialog will add a date and the page title at the top of the page.\n\n' +
-            'To get a clean output, leave this dialog OFF and use the green "download PDF" button instead.\n\n' +
-            'If you still want the browser print dialog, click OK.\n' +
-            'You can avoid the header by unchecking "Headers and footers" in the print dialog’s "More settings".'
-          );
-          if (ok) window.print();
-        });
-      }
     })();
   </script>
 </body>
