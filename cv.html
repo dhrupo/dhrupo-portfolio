@@ -44,8 +44,11 @@
       font-size: 13px; line-height: 1.55;
     }
     .cv-header {
-      display: flex; justify-content: space-between; align-items: flex-start; gap: 24px;
+      display: flex; justify-content: space-between; align-items: stretch; gap: 24px;
       border-bottom: 2px solid var(--border); padding-bottom: 18px; margin-bottom: 22px;
+    }
+    .cv-header > div:first-child {
+      display: flex; flex-direction: column; justify-content: space-between;
     }
     .cv-name {
       font-family: "JetBrains Mono", ui-monospace, monospace;
@@ -67,6 +70,7 @@
       text-align: right;
       font-family: "JetBrains Mono", ui-monospace, monospace;
       font-size: 11px; line-height: 1.7; color: var(--fg-muted);
+      display: flex; flex-direction: column; justify-content: space-between;
     }
     .cv-contact a { color: var(--cmd); text-decoration: none; }
     .cv-contact a:hover { text-decoration: underline; }
