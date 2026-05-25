@@ -440,7 +440,7 @@ h3.cmd::after {
 .game-main {
   max-width: 1180px; margin: 24px auto 0; padding: 0 24px;
   display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 28px;
-  align-items: start;
+  align-items: stretch;
 }
 .game-stage { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 
@@ -517,15 +517,14 @@ h3.cmd::after {
 }
 .game-intro { margin: 0; color: var(--fg-muted); font-size: 12px; }
 
-/* Sidebar: sticky + scrollable discoveries list */
+/* Sidebar: matches stage column height; head row matches HUD chip row */
 .game-sidebar {
   min-width: 0;
-  position: sticky; top: 24px;
-  display: flex; flex-direction: column; gap: 12px;
-  max-height: calc(100vh - 100px);
+  display: flex; flex-direction: column; gap: 14px;
 }
 .game-sidebar-head {
-  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+  min-height: 38px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
 .game-sidebar h3 { font-size: 14px; margin: 0; color: var(--fg-muted); }
 .game-sidebar h3::after { display: none; }  /* no blinking cursor inside sidebar */
@@ -539,8 +538,7 @@ h3.cmd::after {
 .discoveries-wrap {
   background: var(--bg-elev); border: 1px solid var(--border); border-radius: 6px;
   padding: 10px;
-  height: 480px;
-  max-height: calc(100vh - 200px);
+  flex: 1; min-height: 0;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
@@ -579,9 +577,8 @@ h3.cmd::after {
 .discoveries-empty p { margin: 0; color: var(--fg-muted); font-size: 11px; }
 
 @media (max-width: 900px) {
-  .game-main { grid-template-columns: 1fr; }
-  .game-sidebar { position: static; max-height: none; }
-  .discoveries-wrap { height: 320px; max-height: 50vh; }
+  .game-main { grid-template-columns: 1fr; align-items: start; }
+  .discoveries-wrap { flex: none; height: 320px; max-height: 50vh; }
 }
 @media (max-width: 640px) {
   .game-prompt { display: none; }
