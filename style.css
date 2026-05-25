@@ -19,16 +19,16 @@
 }
 
 :root[data-theme="light"] {
-  --bg: #ffffff;
-  --bg-elev: #f6f8fa;
+  --bg: #eef1f5;
+  --bg-elev: #f9fafc;
   --border: #d0d7de;
   --fg: #1f2328;
-  --fg-muted: #656d76;
-  --fg-strong: #1f2328;
+  --fg-muted: #5d6772;
+  --fg-strong: #14181f;
   --prompt: #1a7f37;
   --cmd: #0969da;
   --accent: #cf222e;
-  --shadow: 0 4px 24px rgba(31,35,40,.1);
+  --shadow: 0 4px 24px rgba(31,35,40,.08);
 }
 
 html { scroll-behavior: smooth; }
