@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>$ snake-tour — dhrupo</title>
+  <meta name="description" content="A terminal-flavored snake game that doubles as a tour of dhrupo's portfolio.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <script>
+    (function(){
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch(e) {}
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="game-body">
+
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><span class="brand-prompt">$</span> dhrupo<span class="status-dot" aria-label="Status: available"></span></a>
+      <span class="game-prompt">$ snake-tour --discover</span>
+      <a class="btn" href="index.html">← back</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false" data-theme-toggle>
+        <span class="theme-icon" aria-hidden="true">☾</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="game-main" id="main">
+
+    <section class="game-stage" aria-label="Snake game board">
+      <div class="game-frame">
+        <canvas id="game-canvas" tabindex="0" aria-label="Snake game canvas — use arrow keys or WASD to move"></canvas>
+        <div class="game-scanlines" aria-hidden="true"></div>
+      </div>
+      <div class="game-hud" role="status" aria-live="polite">
+        <span><span class="game-label">score</span> <strong id="game-score">000</strong></span>
+        <span><span class="game-label">found</span> <strong id="game-found">0/6</strong></span>
+        <span class="muted game-controls">arrows or WASD · R restart · esc back · P pause</span>
+      </div>
+      <p class="game-intro">// drive the snake into each labeled block to unlock that section. eat all six to complete the tour.</p>
+    </section>
+
+    <aside class="game-sidebar" aria-label="Discoveries">
+      <h3 class="cmd"><span class="prompt">~</span> <span class="verb">ls</span> ./discoveries/</h3>
+      <ul id="game-discoveries" class="discoveries" aria-live="polite"></ul>
+      <p class="muted game-hint" id="game-empty">// nothing yet — start playing</p>
+    </aside>
+
+  </main>
+
+  <script src="js/theme.js" defer></script>
+  <script src="js/game.js" defer></script>
+</body>
+</html>

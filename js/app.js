@@ -90,6 +90,11 @@
 
     if (e.key === '?') { e.preventDefault(); openCheat(); return; }
     if (e.key === 'Escape') { closeCheat(); return; }
+    if (e.key === 's' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      e.preventDefault();
+      window.location.href = 'game.html';
+      return;
+    }
 
     if (e.key === 'g') { lastKey = 'g'; lastKeyAt = Date.now(); return; }
     if (e.key === 'h' && lastKey === 'g' && (Date.now() - lastKeyAt) < 1000) {

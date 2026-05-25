@@ -11,6 +11,7 @@
     { cat: 'nav',   name: 'oss',       run: function(){ goto('#oss'); } },
     { cat: 'nav',   name: 'notes',     run: function(){ goto('#notes'); } },
     { cat: 'nav',   name: 'contact',   run: function(){ goto('#contact'); } },
+    { cat: 'play',  name: 'snake game', run: function(){ closePalette(); window.location.href = 'game.html'; } },
     { cat: 'theme', name: 'dark',      run: function(){ if (window.__theme) window.__theme.set('dark'); } },
     { cat: 'theme', name: 'light',     run: function(){ if (window.__theme) window.__theme.set('light'); } },
     { cat: 'theme', name: 'toggle',    run: function(){ if (!window.__theme) return; var t = window.__theme.get(); window.__theme.set(t === 'dark' ? 'light' : 'dark'); } },
