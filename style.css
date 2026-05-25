@@ -105,6 +105,52 @@ a:focus-visible, button:focus-visible, [data-copy]:focus-visible {
 }
 .nav-links a:hover { color: var(--prompt); text-decoration: none; }
 
+/* PLAY button — arcade flavor: rainbow text shimmer + blinking ▶ + glow */
+.nav-links a.nav-game {
+  position: relative;
+  padding: 3px 10px 3px 8px;
+  border: 1px solid var(--prompt);
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-left: 4px;
+  background: linear-gradient(90deg, #56d364 0%, #79c0ff 30%, #ff7b72 60%, #56d364 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: nav-game-shimmer 3.5s linear infinite;
+  transition: box-shadow .2s ease, transform .15s ease, border-color .2s ease;
+}
+.nav-links a.nav-game::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 4px;
+  -webkit-text-fill-color: var(--prompt);
+  color: var(--prompt);
+  animation: nav-game-blink 1.1s steps(2, start) infinite;
+  font-size: 10px;
+  vertical-align: 1px;
+}
+.nav-links a.nav-game:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+  border-color: var(--accent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--prompt) 50%, transparent),
+              inset 0 0 8px color-mix(in srgb, var(--prompt) 20%, transparent);
+}
+@keyframes nav-game-shimmer {
+  to { background-position: 300% 50%; }
+}
+@keyframes nav-game-blink {
+  50% { opacity: .25; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-links a.nav-game { animation: none; background: none; -webkit-text-fill-color: var(--prompt); color: var(--prompt); }
+  .nav-links a.nav-game::before { animation: none; }
+}
+
 .theme-toggle {
   background: transparent; border: 1px solid var(--border); color: var(--fg);
   padding: 6px 10px; border-radius: 4px;
